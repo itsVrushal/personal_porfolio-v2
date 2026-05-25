@@ -42,7 +42,7 @@ export default function HeroSection() {
 
           <motion.h1
             variants={itemVariants}
-            className="flex flex-col font-syne text-[clamp(4rem,10vw,9rem)] font-black leading-[0.9] tracking-tighter uppercase mb-6"
+            className="flex flex-col font-syne text-[clamp(2.5rem,10vw,9rem)] font-black leading-[0.9] tracking-tighter uppercase mb-6"
           >
             <span className="text-text-hi">VRUSHAL</span>
             <span
