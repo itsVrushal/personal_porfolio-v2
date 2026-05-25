@@ -16,6 +16,9 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   title: "Vrushal Patil | AI & Systems Developer",
   description: "Personal portfolio of Vrushal Patil, AI & Systems Developer based in Pune, India.",
+  verification: {
+    google: "6X3FEyhlcgVnaZNiE2apDWtadWFd6JJvV11rQzCkGbs",
+  },
 };
 
 export default function RootLayout({
