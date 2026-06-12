@@ -42,7 +42,7 @@ export default function ContactSection() {
             Let&apos;s build something.
           </h2>
           <p className="text-text-lo text-lg md:text-xl mb-12 max-w-2xl mx-auto">
-            Open to internships, collaborations, and interesting problems.
+            Open to collaborations, and solving real-world problems.
           </p>
 
           <div className="flex flex-col items-center gap-8">

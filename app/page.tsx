@@ -23,7 +23,7 @@ export default function Home() {
 
       <main
         className="flex min-h-screen flex-col text-text-lo font-sans selection:bg-accent/30 selection:text-text-hi"
-        style={{ position: "relative", zIndex: 1 }}
+        style={{ position: "relative", zIndex: 1, perspective: "1400px" }}
       >
         <HeroSection />
         <AboutSection />

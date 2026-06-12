@@ -41,8 +41,8 @@ function useMounted(delay = 0) {
 }
 
 // Spring configs
-const dotSpring   = { type: "spring", stiffness: 380, damping: 22, mass: 0.8 };
-const labelSpring = { type: "spring", stiffness: 300, damping: 24, mass: 0.6 };
+const dotSpring   = { type: "spring", stiffness: 380, damping: 22, mass: 0.8 } as const;
+const labelSpring = { type: "spring", stiffness: 300, damping: 24, mass: 0.6 } as const;
 
 export default function Navbar() {
   const activeSection = useActiveSection();
@@ -81,6 +81,7 @@ export default function Navbar() {
           own transform on motion.nav never clobbers translateY(-50%).
       ─────────────────────────────────────────────────────────── */}
       <div
+        className="hidden md:block"
         style={{
           position: "fixed",
           left: "1.5rem",

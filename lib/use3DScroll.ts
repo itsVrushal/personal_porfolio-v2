@@ -37,11 +37,32 @@ export function use3DScroll(options: Use3DScrollOptions = {}): ScrollTransformVa
     offset: ["start end", "end start"],
   });
 
-  // Map [0..range[0]] -> initial values, [range[0]..range[1]] -> final values
-  const rawRotateX = useTransform(scrollYProgress, [0, range[0], range[1], 0.85, 1], [initialRotateX, initialRotateX, 0, 0, -4]);
-  const rawTranslateY = useTransform(scrollYProgress, [0, range[0], range[1]], [initialY, initialY, 0]);
-  const rawOpacity = useTransform(scrollYProgress, [0, range[0], range[1] * 0.7, 0.9, 1], [0, 0, 1, 1, 0]);
-  const rawScale = useTransform(scrollYProgress, [0, range[0], range[1]], [0.96, 0.96, 1]);
+  // Map [0..range[0]] -> initial values (entering)
+  // [range[0]..0.75] -> fully visible
+  // [0.75..1] -> exiting (flying towards screen)
+  const rawRotateX = useTransform(
+    scrollYProgress,
+    [0, range[0], 0.75, 1],
+    [initialRotateX, 0, 0, -8]
+  );
+  
+  const rawTranslateY = useTransform(
+    scrollYProgress,
+    [0, range[0], 0.75, 1],
+    [initialY, 0, 0, -100]
+  );
+  
+  const rawOpacity = useTransform(
+    scrollYProgress,
+    [0, range[0], 0.7, 0.95],
+    [0, 1, 1, 0]
+  );
+  
+  const rawScale = useTransform(
+    scrollYProgress,
+    [0, range[0], 0.75, 1],
+    [0.9, 1, 1, 1.3]
+  );
 
   const rotateX = useSpring(rawRotateX, spring);
   const translateY = useSpring(rawTranslateY, spring);

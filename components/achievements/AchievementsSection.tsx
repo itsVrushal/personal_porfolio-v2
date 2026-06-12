@@ -26,7 +26,7 @@ export default function AchievementsSection() {
           </h2>
         </div>
 
-        <div className="flex overflow-x-auto md:grid md:grid-cols-2 gap-6 pb-8 md:pb-0 snap-x snap-mandatory">
+        <div className="flex overflow-x-auto hide-scrollbar md:grid md:grid-cols-2 gap-6 pb-8 md:pb-0 snap-x snap-mandatory">
           {achievements.map((item, index) => (
             <motion.div
               key={index}
