@@ -1,10 +1,12 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import { useInView } from "framer-motion";
 import SectionLabel from "../ui/SectionLabel";
 import GlassCard from "../ui/GlassCard";
 import { personalInfo, education } from "@/lib/data";
+import { use3DScroll } from "@/lib/use3DScroll";
 
 function Counter({ from = 0, to, duration = 1.2 }: { from?: number; to: number; duration?: number }) {
   const [count, setCount] = useState(from);
@@ -13,23 +15,15 @@ function Counter({ from = 0, to, duration = 1.2 }: { from?: number; to: number; 
 
   useEffect(() => {
     if (!isInView) return;
-
     let startTimestamp: number;
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / (duration * 1000), 1);
-      
       const currentCount = progress * (to - from) + from;
-      // If we are dealing with decimals like CGPA, we don't round to int
       setCount(to % 1 !== 0 ? Number(currentCount.toFixed(2)) : Math.floor(currentCount));
-
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      } else {
-        setCount(to);
-      }
+      if (progress < 1) window.requestAnimationFrame(step);
+      else setCount(to);
     };
-
     window.requestAnimationFrame(step);
   }, [isInView, from, to, duration]);
 
@@ -37,20 +31,19 @@ function Counter({ from = 0, to, duration = 1.2 }: { from?: number; to: number; 
 }
 
 export default function AboutSection() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-10%" });
+  const { ref, rotateX, translateY, opacity, scale } = use3DScroll({ initialRotateX: 8, initialY: 50 });
 
   return (
-    <section id="about" className="py-24 relative" ref={sectionRef}>
+    <motion.section
+      id="about"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-24 relative"
+      style={{ rotateX, y: translateY, opacity, scale }}
+    >
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
-        
-        {/* Left Column: Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-col justify-center"
-        >
+
+        {/* Left — Stats */}
+        <div className="flex flex-col justify-center">
           <div className="mb-12">
             <div className="font-syne text-6xl lg:text-8xl font-bold text-text-hi">
               <Counter to={parseFloat(education.cgpa)} />
@@ -78,14 +71,10 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Right Column: Bio & Education */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+        {/* Right — Bio */}
+        <div>
           <SectionLabel label="About" />
           <h2 className="font-syne text-3xl md:text-4xl font-bold text-text-hi mb-6">
             Building systems that think.
@@ -122,9 +111,9 @@ export default function AboutSection() {
               </span>
             </div>
           </GlassCard>
-        </motion.div>
+        </div>
 
       </div>
-    </section>
+    </motion.section>
   );
 }

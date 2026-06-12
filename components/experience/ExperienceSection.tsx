@@ -1,43 +1,39 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import SectionLabel from "../ui/SectionLabel";
+import { motion } from "framer-motion";
 import GlassCard from "../ui/GlassCard";
+import SectionLabel from "../ui/SectionLabel";
 import { experience } from "@/lib/data";
+import { use3DScroll } from "@/lib/use3DScroll";
 
 export default function ExperienceSection() {
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-10%" });
+  const { ref, rotateX, translateY, opacity, scale } = use3DScroll({ initialRotateX: 10, initialY: 60 });
 
   return (
-    <section id="experience" className="py-24 relative" ref={sectionRef}>
+    <motion.section
+      id="experience"
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-24 relative"
+      style={{ rotateX, y: translateY, opacity, scale }}
+    >
       <div className="max-w-4xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
+        <div className="mb-12">
           <SectionLabel label="Experience" />
-        </motion.div>
+        </div>
 
-        <div className="relative border-l border-white/[0.05] ml-4 md:ml-0 md:border-none flex flex-col gap-12">
+        <div className="flex flex-col gap-10">
           {experience.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="relative pl-8 md:pl-0"
+              initial={{ opacity: 0, y: 30, rotateX: 6 }}
+              whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+              viewport={{ once: true, margin: "-5%" }}
+              transition={{ duration: 0.65, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+              style={{ }}
             >
-              {/* Timeline dot for mobile */}
-              <div className="md:hidden absolute w-3 h-3 bg-surface border border-accent rounded-full -left-[1.35rem] top-6" />
-
               <GlassCard className="p-8 group relative overflow-hidden">
-                {/* Subtle left border highlight on hover */}
-                <div className="absolute left-0 top-0 bottom-0 w-1 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+                <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
                 <div className="flex flex-col md:flex-row md:items-start justify-between gap-4 mb-6">
                   <div>
                     <h3 className="font-syne text-2xl font-bold text-text-hi mb-1">
@@ -47,9 +43,11 @@ export default function ExperienceSection() {
                       {exp.role}
                     </h4>
                   </div>
-                  <div className="font-mono text-xs font-medium text-accent bg-accent-dim px-3 py-1 rounded-full w-fit">
-                    {exp.period}
-                  </div>
+                  {exp.period && (
+                    <div className="font-mono text-xs font-medium text-accent bg-accent-dim px-3 py-1 rounded-full w-fit">
+                      {exp.period}
+                    </div>
+                  )}
                 </div>
 
                 <ul className="flex flex-col gap-3">
@@ -65,6 +63,6 @@ export default function ExperienceSection() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
