@@ -49,7 +49,7 @@ export default function ContactSection() {
             <div className="relative">
               <MagneticButton
                 onClick={handleCopyEmail}
-                className="font-mono text-lg md:text-2xl text-accent border-b border-accent pb-1 hover:text-white hover:border-white transition-colors"
+                className="font-mono text-lg md:text-2xl text-accent border-b border-accent pb-1 hover:text-text-hi hover:border-text-hi transition-colors"
               >
                 {personalInfo.email}
               </MagneticButton>
@@ -58,7 +58,7 @@ export default function ContactSection() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
-                  className="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface border border-white/[0.1] text-text-hi text-xs py-1 px-3 rounded-full font-mono"
+                  className="absolute -top-10 left-1/2 -translate-x-1/2 bg-surface border border-border text-text-hi text-xs py-1 px-3 rounded-full font-mono shadow-md"
                 >
                   Copied!
                 </motion.div>

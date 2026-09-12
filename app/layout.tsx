@@ -31,7 +31,12 @@ export default function RootLayout({
       lang="en"
       className={`${syne.variable} ${dmMono.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col selection:bg-accent/30 selection:text-text-hi">{children}</body>
+      <body
+        suppressHydrationWarning
+        className="min-h-full flex flex-col selection:bg-accent/30 selection:text-text-hi"
+      >
+        {children}
+      </body>
     </html>
   );
 }

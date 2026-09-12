@@ -16,7 +16,7 @@ export default function HeroSection() {
     const rect = sectionRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    spotlightRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(74,240,255,0.07) 0%, transparent 60%)`;
+    spotlightRef.current.style.background = `radial-gradient(600px circle at ${x}px ${y}px, rgba(194,94,26,0.08) 0%, transparent 60%)`;
   }, []);
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function HeroSection() {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.08, delayChildren: 2.0 },
+      transition: { staggerChildren: 0.08, delayChildren: 1.8 },
     },
   };
 
@@ -48,7 +48,7 @@ export default function HeroSection() {
       opacity: 1,
       y: 0,
       rotateX: 0,
-      transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
@@ -109,23 +109,23 @@ export default function HeroSection() {
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* VRUSHAL — solid */}
+              {/* VRUSHAL — solid deep espresso */}
               <span
                 style={{
                   color: "var(--text-hi)",
                   textShadow:
-                    "0 1px 0 rgba(255,255,255,0.15), 0 2px 0 rgba(0,0,0,0.6), 0 4px 0 rgba(0,0,0,0.4), 0 8px 20px rgba(0,0,0,0.3)",
+                    "0 2px 20px rgba(140,115,90,0.12), 0 1px 3px rgba(28,25,23,0.08)",
                 }}
               >
                 VRUSHAL
               </span>
-              {/* PATIL — outline with depth */}
+              {/* PATIL — outline with warm amber glass depth */}
               <span
                 style={{
-                  WebkitTextStroke: "1px var(--text-hi)",
-                  color: "transparent",
+                  WebkitTextStroke: "2px var(--text-hi)",
+                  color: "rgba(194, 94, 26, 0.07)",
                   textShadow:
-                    "0 2px 0 rgba(255,255,255,0.05), 0 8px 30px rgba(74,240,255,0.08)",
+                    "0 8px 30px rgba(194,94,26,0.18)",
                 }}
               >
                 PATIL
@@ -142,10 +142,10 @@ export default function HeroSection() {
             </motion.p>
 
             <motion.div variants={itemVariants} style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              <MagneticButton className="bg-accent text-[#080808] font-bold px-8 py-3 rounded-full hover:bg-white transition-colors">
+              <MagneticButton className="bg-accent text-white font-bold px-8 py-3 rounded-full hover:bg-accent/90 shadow-[0_4px_16px_rgba(194,94,26,0.25)] transition-all">
                 <a href="#projects">View Work</a>
               </MagneticButton>
-              <MagneticButton className="bg-transparent border border-white/[0.1] text-text-hi px-8 py-3 rounded-full hover:bg-white/[0.05] transition-colors">
+              <MagneticButton className="bg-surface/80 border border-border text-text-hi px-8 py-3 rounded-full hover:bg-surface transition-all shadow-[0_2px_8px_rgba(140,115,90,0.06)]">
                 <a href="#contact">Get In Touch</a>
               </MagneticButton>
             </motion.div>

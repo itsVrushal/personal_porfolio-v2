@@ -113,7 +113,7 @@ export default function Navbar() {
               bottom: "-0.5rem",
               width: "1px",
               background:
-                "linear-gradient(to bottom, transparent, rgba(255,255,255,0.14) 20%, rgba(255,255,255,0.14) 80%, transparent)",
+                "linear-gradient(to bottom, transparent, rgba(165,135,105,0.25) 20%, rgba(165,135,105,0.25) 80%, transparent)",
               borderRadius: "1px",
             }}
           />
@@ -146,10 +146,10 @@ export default function Navbar() {
                     backgroundColor: isActive
                       ? "var(--accent)"
                       : isHovered
-                      ? "rgba(74,240,255,0.55)"
-                      : "rgba(255,255,255,0.32)",
+                      ? "rgba(194,94,26,0.55)"
+                      : "rgba(165,135,105,0.4)",
                     boxShadow: isActive
-                      ? "0 0 10px 4px rgba(74,240,255,0.55)"
+                      ? "0 0 10px 3px rgba(194,94,26,0.4)"
                       : "none",
                   }}
                   transition={dotSpring}

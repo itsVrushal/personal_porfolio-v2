@@ -1,11 +1,10 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
-import { useInView } from "framer-motion";
 import SectionLabel from "../ui/SectionLabel";
 import GlassCard from "../ui/GlassCard";
-import { personalInfo, education } from "@/lib/data";
+import { personalInfo, education, projects, experience } from "@/lib/data";
 import { use3DScroll } from "@/lib/use3DScroll";
 
 function Counter({ from = 0, to, duration = 1.2 }: { from?: number; to: number; duration?: number }) {
@@ -56,7 +55,7 @@ export default function AboutSection() {
           <div className="grid grid-cols-2 gap-8">
             <div>
               <div className="font-syne text-4xl lg:text-5xl font-bold text-text-hi">
-                <Counter to={2} />
+                <Counter to={experience.length} />
               </div>
               <div className="font-mono text-xs tracking-widest uppercase text-text-lo mt-2">
                 Internships / Roles
@@ -64,7 +63,7 @@ export default function AboutSection() {
             </div>
             <div>
               <div className="font-syne text-4xl lg:text-5xl font-bold text-text-hi">
-                <Counter to={5} />+
+                <Counter to={projects.length} />+
               </div>
               <div className="font-mono text-xs tracking-widest uppercase text-text-lo mt-2">
                 Major Projects
@@ -89,7 +88,7 @@ export default function AboutSection() {
             {["AI/ML", "Systems Design", "Backend", "Cloud"].map((chip) => (
               <span
                 key={chip}
-                className="font-mono text-xs px-3 py-1 rounded-full border border-white/[0.05] bg-surface text-text-hi"
+                className="font-mono text-xs px-3 py-1 rounded-full border border-border bg-surface text-text-hi shadow-[0_2px_8px_rgba(140,115,90,0.04)]"
               >
                 {chip}
               </span>

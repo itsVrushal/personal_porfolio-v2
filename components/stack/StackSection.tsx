@@ -10,10 +10,11 @@ export default function StackSection() {
 
   const skillGroups = [
     { label: "Languages", items: skills.languages },
-    { label: "AI / LLM", items: skills.ai_llm },
-    { label: "Backend & Data", items: skills.backend_data },
-    { label: "ML / CV", items: skills.ml_cv },
-    { label: "DevOps", items: skills.devops },
+    { label: "Agentic AI", items: skills.agentic_ai },
+    { label: "Machine Learning & Vision", items: skills.ml_vision },
+    { label: "MLOps & Infrastructure", items: skills.mlops_infra },
+    { label: "Databases & Vector Stores", items: skills.databases_vectors },
+    { label: "Backend & Networking", items: skills.backend_networking },
   ];
 
   return (
@@ -57,7 +58,7 @@ export default function StackSection() {
                       delay: index * 0.05 + skillIdx * 0.04,
                       ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="border border-white/[0.07] bg-surface text-text-lo font-mono text-xs px-4 py-2 rounded-full transition-colors duration-300 hover:border-accent hover:text-accent cursor-default"
+                    className="border border-border bg-surface text-text-lo font-mono text-xs px-4 py-2 rounded-full shadow-[0_2px_8px_rgba(140,115,90,0.04)] transition-colors duration-300 hover:border-accent hover:text-accent cursor-default"
                   >
                     {skill}
                   </motion.span>

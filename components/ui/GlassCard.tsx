@@ -29,7 +29,7 @@ export default function GlassCard({
         const rotX = -y * tiltStrength;
         cardRef.current.style.transform = `perspective(800px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(4px)`;
         // Shift the inner highlight
-        cardRef.current.style.backgroundImage = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(74,240,255,0.05) 0%, transparent 60%)`;
+        cardRef.current.style.backgroundImage = `radial-gradient(circle at ${(x + 0.5) * 100}% ${(y + 0.5) * 100}%, rgba(194,94,26,0.06) 0%, transparent 60%)`;
       });
     },
     [tiltStrength]
@@ -48,7 +48,7 @@ export default function GlassCard({
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative rounded-2xl bg-white/[0.03] border border-white/[0.07] backdrop-blur-xl transition-[border-color,box-shadow] duration-300 hover:border-accent/25 hover:shadow-[0_0_30px_rgba(74,240,255,0.06)] ${className}`}
+      className={`relative rounded-2xl bg-white/75 border border-border backdrop-blur-xl shadow-[0_4px_24px_rgba(140,115,90,0.06)] transition-[border-color,box-shadow] duration-300 hover:border-accent/35 hover:shadow-[0_12px_36px_rgba(194,94,26,0.11)] ${className}`}
       style={{
         willChange: "transform",
         transformStyle: "preserve-3d",

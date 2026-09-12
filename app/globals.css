@@ -13,13 +13,14 @@
 }
 
 :root {
-  --bg: #060608;
-  --surface: #0f0f11;
-  --border: rgba(255, 255, 255, 0.07);
-  --text-hi: #f0ece4;
-  --text-lo: #5a5a5a;
-  --accent: #4af0ff;
-  --accent-dim: rgba(74, 240, 255, 0.10);
+  --bg: #f7f4ed;
+  --surface: #ffffff;
+  --border: rgba(165, 135, 105, 0.18);
+  --text-hi: #1c1917;
+  --text-lo: #665f57;
+  --accent: #c25e1a;
+  --accent-dim: rgba(194, 94, 26, 0.09);
+  --accent-glow: rgba(194, 94, 26, 0.35);
 }
 
 /* 3D perspective is applied per-section via framer-motion inline style */
@@ -41,7 +42,7 @@ body::before {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.018;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-size: 128px 128px;
 }
@@ -54,7 +55,7 @@ body::before {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(165, 135, 105, 0.25);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {

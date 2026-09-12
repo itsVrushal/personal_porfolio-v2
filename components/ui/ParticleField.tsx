@@ -67,10 +67,10 @@ function Particles({ count = 600 }: { count?: number }) {
         />
       </bufferGeometry>
       <pointsMaterial
-        size={0.028}
-        color="#4af0ff"
+        size={0.026}
+        color="#c48b4e"
         transparent
-        opacity={0.35}
+        opacity={0.45}
         sizeAttenuation
         depthWrite={false}
       />
