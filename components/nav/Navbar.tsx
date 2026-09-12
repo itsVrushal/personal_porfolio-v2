@@ -47,7 +47,7 @@ const labelSpring = { type: "spring", stiffness: 300, damping: 24, mass: 0.6 } a
 export default function Navbar() {
   const activeSection = useActiveSection();
   const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
-  const mounted = useMounted(1900);
+  const mounted = useMounted(700);
 
   if (!mounted) return null;
 
