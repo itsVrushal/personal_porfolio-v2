@@ -44,7 +44,7 @@ export default function ExperienceSection() {
                     </h4>
                   </div>
                   {exp.period && (
-                    <div className="font-mono text-xs font-medium text-accent bg-accent-dim px-3 py-1 rounded-full w-fit">
+                    <div className="font-mono text-xs font-semibold text-accent bg-accent-dim px-3 py-1 rounded-full w-fit border border-accent/20">
                       {exp.period}
                     </div>
                   )}

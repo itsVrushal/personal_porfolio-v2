@@ -54,27 +54,13 @@ export default function Navbar() {
   const content = (
     <>
       {/* ── Logo ─────────────────────────────────────────────── */}
-      <motion.a
+      <a
         href="#home"
-        initial={{ opacity: 0, x: -12 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        style={{
-          position: "fixed",
-          top: "1.5rem",
-          left: "1.5rem",
-          zIndex: 9990,
-          fontFamily: "var(--font-syne), sans-serif",
-          fontWeight: 900,
-          fontSize: "1.1rem",
-          letterSpacing: "-0.05em",
-          color: "var(--accent)",
-          textDecoration: "none",
-          lineHeight: 1,
-        }}
+        aria-label="Vrushal Patil Home"
+        className="fixed top-6 left-6 z-[9990] font-syne font-black text-[1.1rem] tracking-[-0.05em] text-accent no-underline leading-none select-none transition-opacity hover:opacity-80"
       >
         VP
-      </motion.a>
+      </a>
 
       {/* ── Side Rail ────────────────────────────────────────────
           Wrapper div owns the fixed+centering so framer-motion's

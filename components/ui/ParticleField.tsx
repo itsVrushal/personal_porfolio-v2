@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -23,17 +23,15 @@ function Particles({ count = 600 }: { count?: number }) {
     return [pos, rnd];
   }, [count]);
 
-  // Track mouse
-  if (typeof window !== "undefined") {
+  // Track mouse smoothly with passive event listener and cleanup
+  useEffect(() => {
     const handleMouse = (e: MouseEvent) => {
       mouse.current.x = (e.clientX / window.innerWidth - 0.5) * 2;
       mouse.current.y = -(e.clientY / window.innerHeight - 0.5) * 2;
     };
-    // Assign once (this runs in useMemo-equivalent context; fine for event listeners)
-    if (!mouse.current) {
-      window.addEventListener("mousemove", handleMouse);
-    }
-  }
+    window.addEventListener("mousemove", handleMouse, { passive: true });
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
 
   useFrame(({ clock }) => {
     if (!mesh.current) return;
@@ -79,6 +77,26 @@ function Particles({ count = 600 }: { count?: number }) {
 }
 
 export default function ParticleField() {
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "requestIdleCallback" in window) {
+      const id = (window as unknown as { requestIdleCallback: (cb: () => void) => number }).requestIdleCallback(() => {
+        setReady(true);
+      });
+      return () => {
+        if ("cancelIdleCallback" in window) {
+          (window as unknown as { cancelIdleCallback: (id: number) => void }).cancelIdleCallback(id);
+        }
+      };
+    } else {
+      const timer = setTimeout(() => setReady(true), 250);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
+  if (!ready) return null;
+
   return (
     <div
       style={{
@@ -92,11 +110,11 @@ export default function ParticleField() {
     >
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ antialias: false, alpha: true }}
+        gl={{ antialias: false, alpha: true, powerPreference: "low-power" }}
         style={{ background: "transparent" }}
         dpr={[1, 1.5]}
       >
-        <Particles count={600} />
+        <Particles count={500} />
       </Canvas>
     </div>
   );

@@ -77,6 +77,8 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex self-start"
+              style={{ willChange: "transform, opacity" }}
             >
               <SectionLabel label="AI & Systems Developer" />
             </motion.div>
@@ -107,8 +109,8 @@ export default function HeroSection() {
                 {VRUSHAL_LETTERS.map((char, i) => (
                   <motion.span
                     key={`v-${i}`}
-                    initial={{ opacity: 0, y: 32, rotateX: 65, filter: "blur(4px)" }}
-                    animate={{ opacity: 1, y: 0, rotateX: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, y: 28, rotateX: 60, scale: 0.94 }}
+                    animate={{ opacity: 1, y: 0, rotateX: 0, scale: 1 }}
                     transition={{
                       duration: 0.55,
                       delay: 0.12 + i * 0.05,
@@ -118,6 +120,7 @@ export default function HeroSection() {
                       display: "inline-block",
                       transformOrigin: "50% 80%",
                       transformStyle: "preserve-3d",
+                      willChange: "transform, opacity",
                     }}
                   >
                     {char}
@@ -125,21 +128,21 @@ export default function HeroSection() {
                 ))}
               </span>
 
-              {/* PATIL — buttery de-blur slide down emergence */}
+              {/* PATIL — buttery 3D slide down emergence */}
               <span
                 style={{
                   display: "inline-flex",
                   WebkitTextStroke: "2px var(--text-hi)",
-                  color: "rgba(194, 94, 26, 0.07)",
-                  textShadow: "0 8px 30px rgba(194,94,26,0.18)",
+                  color: "rgba(168, 67, 8, 0.07)",
+                  textShadow: "0 8px 30px rgba(168,67,8,0.18)",
                   perspective: "1000px",
                 }}
               >
                 {PATIL_LETTERS.map((char, i) => (
                   <motion.span
                     key={`p-${i}`}
-                    initial={{ opacity: 0, y: -22, filter: "blur(6px)" }}
-                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, y: -20, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{
                       duration: 0.65,
                       delay: 0.6 + i * 0.05,
@@ -149,6 +152,7 @@ export default function HeroSection() {
                       display: "inline-block",
                       transformOrigin: "50% 20%",
                       transformStyle: "preserve-3d",
+                      willChange: "transform, opacity",
                     }}
                   >
                     {char}
@@ -176,11 +180,17 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 1.15, ease: [0.22, 1, 0.36, 1] }}
               style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
             >
-              <MagneticButton className="bg-accent text-white font-bold px-8 py-3 rounded-full hover:bg-accent/90 shadow-[0_4px_16px_rgba(194,94,26,0.25)] transition-all">
-                <a href="#projects">View Work</a>
+              <MagneticButton
+                href="#projects"
+                className="bg-accent text-white font-bold px-8 py-3 rounded-full hover:bg-accent/90 shadow-[0_4px_16px_rgba(168,67,8,0.25)] transition-all"
+              >
+                View Work
               </MagneticButton>
-              <MagneticButton className="bg-surface/80 border border-border text-text-hi px-8 py-3 rounded-full hover:bg-surface transition-all shadow-[0_2px_8px_rgba(140,115,90,0.06)]">
-                <a href="#contact">Get In Touch</a>
+              <MagneticButton
+                href="#contact"
+                className="bg-surface/80 border border-border text-text-hi px-8 py-3 rounded-full hover:bg-surface transition-all shadow-[0_2px_8px_rgba(140,115,90,0.06)]"
+              >
+                Get In Touch
               </MagneticButton>
             </motion.div>
           </div>

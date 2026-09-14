@@ -18,9 +18,9 @@
   --border: rgba(165, 135, 105, 0.18);
   --text-hi: #1c1917;
   --text-lo: #665f57;
-  --accent: #c25e1a;
-  --accent-dim: rgba(194, 94, 26, 0.09);
-  --accent-glow: rgba(194, 94, 26, 0.35);
+  --accent: #a84308;
+  --accent-dim: rgba(168, 67, 8, 0.08);
+  --accent-glow: rgba(168, 67, 8, 0.35);
 }
 
 /* 3D perspective is applied per-section via framer-motion inline style */

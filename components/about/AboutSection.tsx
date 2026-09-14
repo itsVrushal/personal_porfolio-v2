@@ -105,7 +105,7 @@ export default function AboutSection() {
             <p className="text-text-lo text-sm mb-4">{education.degree}</p>
             <div className="flex items-center justify-between font-mono text-xs">
               <span className="text-text-lo">{education.period}</span>
-              <span className="text-accent bg-accent-dim px-2 py-0.5 rounded">
+              <span className="text-accent bg-accent-dim px-2.5 py-0.5 rounded-full font-semibold border border-accent/20">
                 CGPA: {education.cgpa}
               </span>
             </div>

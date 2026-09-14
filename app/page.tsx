@@ -1,3 +1,4 @@
+import BackgroundParticles from "@/components/ui/BackgroundParticles";
 import Navbar from "@/components/nav/Navbar";
 import HeroSection from "@/components/hero/HeroSection";
 import AboutSection from "@/components/about/AboutSection";
@@ -7,7 +8,6 @@ import StackSection from "@/components/stack/StackSection";
 import AchievementsSection from "@/components/achievements/AchievementsSection";
 import ContactSection from "@/components/contact/ContactSection";
 import LoadingScreen from "@/components/ui/LoadingScreen";
-import ParticleField from "@/components/ui/ParticleField";
 
 export default function Home() {
   return (
@@ -16,7 +16,7 @@ export default function Home() {
       <LoadingScreen />
 
       {/* Ambient Three.js particle background */}
-      <ParticleField />
+      <BackgroundParticles />
 
       {/* Nav is OUTSIDE main so position:fixed is never broken by transforms */}
       <Navbar />
