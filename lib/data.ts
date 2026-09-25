@@ -23,7 +23,7 @@ export const address = {
 
 export const experience = [
   {
-    company: "Exponential-Functions",
+    company: "AutonexAI360",
     role: "ML Developer",
     period: "July 2026 – Present",
     description: [
